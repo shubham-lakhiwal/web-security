@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Clickjacking IFrame</title>
+</head>
+<body>
+<h1>Child Iframe</h1>
+<p>Iframe: Click the button below to see a simple clickjacking demonstration.</p>
+
+<button style="background-color: red;" onclick="alert('iframe button clicked')">Pay Now</button>
+
+<script>
+  // window.top and self are not the same if the page is in an iframe
+  if (top !== self) {
+    top.location = self.location;
+  }
+</script>
+</body>
+</html>

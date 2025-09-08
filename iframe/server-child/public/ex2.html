@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Malicious iframe</title>
+</head>
+<body>
+<h1>Malicious iframe</h1>
+<p>This iframe steals data from the parent.</p>
+
+<script>
+  window.onload = function () {
+    try {
+      const parentWindow = window.parent;
+      const parentDocument = parentWindow.document;
+      const data = parentDocument.innerHtml;
+      alert("Stolen Data: " + data);
+    } catch (error) {
+      console.error("Data theft failed:", error);
+    }
+  };
+</script>
+</body>
+</html>
